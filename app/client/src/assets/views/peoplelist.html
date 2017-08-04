@@ -1,0 +1,10 @@
+<div class="list-wrap">
+    <p v-show="alertVisible" v-on:togglealert="alertVisible = true"><strong>New person added!</strong></p>
+    <p>People:</p>
+    <p>Filter people: <input type="text" name="professionFilter" value="" placeholder="Filter People" v-model="professionFilter" /></p>
+    <ul>
+        <li v-for="person in filterPeople" v-bind:key="person.fname">
+            {{person.fname}} - {{person.lname}} - <strong>{{person.profession}}</strong>
+        </li>
+    </ul>
+</div>

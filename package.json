@@ -48,6 +48,7 @@
     "gulp-util": "^3.0.8",
     "imagemin-pngquant": "^5.0.1",
     "pretty-hrtime": "^1.0.3",
+    "stringify": "^5.1.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "vue": "^2.4.2",

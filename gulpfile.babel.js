@@ -16,6 +16,7 @@ import connect from 'gulp-connect';
 
 // view/html/templating related
 import htmlmin from 'gulp-htmlmin';
+import stringify from 'stringify';
 
 // scripts and lint related
 import eslint from 'gulp-eslint';
@@ -104,7 +105,7 @@ const bundleScript = (file) => {
     const opts = Object.assign({}, watchify.args, {
         debug: true,
         entries: file,
-        transform: vueify
+        transform: [stringify, vueify]
     });
     const lint = (src) => {
         return gulp.src(src)
@@ -154,8 +155,6 @@ gulp.task('scripts', () => {
             `${ internals.paths.dev.scripts }/libs/**/*`
         ]},
         (err, files) => {
-
-            console.log(files);
 
             if(err) {swallowError(err);}
 

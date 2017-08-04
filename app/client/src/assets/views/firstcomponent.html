@@ -1,0 +1,21 @@
+<section>
+  <h1>{{title}}</h1>
+  <p>{{text}} - {{index}}</p>
+  <p>{{version}}</p>
+  <p>single arr:</p>
+  <ul>
+      <li v-for="item in singlearr" v-bind:key="item" v-text="item"></li>
+  </ul>
+  <button type="button" name="changeText" @click="changeText">Change Text</button><br>
+  <div class="">
+      <form class="newperson" name="newperson">
+          <label for="fname">First name: </label>
+          <input type="text" name="fname" value="" placeholder="First Name" v-model="newperson.fname" :class="{'v-valid': newperson.fname.length > 2, 'v-invalid': newperson.fname.length <= 2 && newperson.fname !== ''}" /><br>
+          <label for="lname">Last name: </label>
+          <input type="text" name="lname" value="" placeholder="Last Name" v-model="newperson.lname" :class="{'v-valid': newperson.lname.length > 2, 'v-invalid': newperson.lname.length <= 2 && newperson.lname !== ''}" /><br>
+          <label for="profession">Profession: </label>
+          <input type="text" name="profession" value="" placeholder="Profession" v-model="newperson.profession" :class="{'v-valid': newperson.profession.length > 2, 'v-invalid': newperson.profession.length <= 2 && newperson.profession !== ''}" /><br>
+          <button type="button" name="addPerson" @click="addPerson">Add Person</button>
+      </form>
+  </div>
+</section>
