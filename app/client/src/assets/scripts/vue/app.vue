@@ -2,6 +2,11 @@
 import appview from '../../views/appview.html';
 import firstcomponent from './components/firstcomponent.vue';
 import peoplelist from './components/peoplelist.vue';
+import tabs from './components/tabs.vue';
+import tab from './components/tab.vue';
+import coupon from './components/coupon.vue';
+import messages from './components/messages.vue';
+import modal from './components/modal.vue';
 
 export default {
     template: appview,
@@ -12,39 +17,59 @@ export default {
                 {fname: 'Willmer', lname: 'Barahona', profession: 'Webdeveloper'},
                 {fname: 'Tinchun', lname: 'Khanny', profession: 'Xamxun'}
             ],
-            singlearr: ['name', 'something']
+            singlearr: ['name', 'something'],
+            msgsettings: {
+                type: 'info',
+                visible: false,
+                message: '',
+                timeout: 0
+            },
+            modalsettings: {
+                type: 'info',
+                visible: false,
+                title: '',
+                content: '',
+                isdialog: false
+            }
         };
+    },
+    methods: {
+        onCouponApplied(val) {
+            this.msgsettings.type = 'success';
+            this.msgsettings.visible = true;
+            this.msgsettings.message = `Coupon applied: ${ val }`;
+            this.msgsettings.timeout = 3000;
+        },
+        userUpdated() {
+            this.msgsettings.type = 'info';
+            this.msgsettings.visible = true;
+            this.msgsettings.message = 'Person added successfully!';
+            this.msgsettings.timeout = 3000;
+        },
+        showModal() {
+            this.modalsettings.type = 'info';
+            this.modalsettings.visible = true;
+            this.modalsettings.title = 'Modal title';
+            this.modalsettings.content = '<p>some stuff here</p>';
+        }
     },
     components: {
         firstcomponent,
-        'people-list': peoplelist
+        'people-list': peoplelist,
+        tabs,
+        tab,
+        coupon,
+        messages,
+        modal
+    },
+    created() {
+        const { Events } = window;
+
+        Events.listen('userupdated', () => this.userUpdated());
+        Events.listen('applied', (val) => this.onCouponApplied(val));
     }
 };
 </script>
 
 <style>
-body {
-    font : 100% Helvetica, sans-serif;
-    color: #ecf0f1;
-    text-align: center;
-    background-color: #34495e;
-}
-.container {
-    margin: 0 auto;
-    padding-top: 70px;
-}
-.v-invalid {
-    background: #fbd2d2;
-    color: red;
-    border: 1px solid red;
-}
-.v-valid {
-    background: #d2fbd2;
-    color: green;
-    border: 1px solid green;
-}
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-    background-color: transparent!important;
-    background-image: none!important;
-}
 </style>

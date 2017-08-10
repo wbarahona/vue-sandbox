@@ -1,0 +1,4 @@
+<div class="alert alert-dismissible" :class="className" role="alert" v-show="settings.visible" :tick="ticker">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="closeMessage"><span aria-hidden="true">&times;</span></button>
+    {{settings.message}}
+</div>

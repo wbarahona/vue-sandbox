@@ -1,0 +1,14 @@
+# Default application configuration that all configurations inherit from.
+
+scss_files: "**/*.scss"
+plugin_directories: ['.scss-linters']
+linters:
+    QualifyingElement:
+        enabled: true
+        allow_element_with_attribute: true
+        allow_element_with_class: true
+        allow_element_with_id: true
+    ColorKeyword:
+        enabled: false
+    ColorVariable:
+        enabled: false

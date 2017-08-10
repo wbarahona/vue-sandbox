@@ -19,17 +19,17 @@ component = {
         };
     },
     props: {
-        'text': {
+        text: {
             type: String,
             required: true,
             default: 'this is a default value'
         },
-        'index': {
+        index: {
             type: Number,
             required: false,
             default: 0
         },
-        'people': {
+        people: {
             type: Array,
             required: true
         },
@@ -49,6 +49,7 @@ component = {
             this.version = `${ this.text } is index: ${ this.index }`;
         },
         addPerson() {
+            const { Events } = window;
             const { newperson } = this;
             const { fname, lname, profession } = newperson;
             const insertperson = {
@@ -60,7 +61,9 @@ component = {
             this.newperson.fname = '';
             this.newperson.lname = '';
             this.newperson.profession = '';
-            this.$emit('togglealert');
+
+            Events.send('userupdated');
+            // this.$emit('userupdated');
         }
     },
     watch: {

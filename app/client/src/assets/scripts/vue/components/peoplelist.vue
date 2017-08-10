@@ -8,23 +8,57 @@ component = {
     template: componentView,
     data() {
         return {
-            professionFilter: '',
-            alertVisible: false
+            personFilter: '',
+            filterExcemptions: ['profession']
         };
     },
     props: {
-        'people': {
+        people: {
             type: Array,
             required: true
         }
     },
     computed: {
         filterPeople() {
-            if (this.professionFilter.length > 0) {
-                return this.people.filter(person => person.profession.toLowerCase() === this.professionFilter.toLowerCase());
+            const { people, personFilter, filterExcemptions } = this;
+            let parts = null;
+            let numericPart = 0;
+            let keySearch = false;
+            let keys = null;
+
+            if (people.length > 0 && personFilter.length > 0) {
+                parts = personFilter && personFilter.trim().split(/\s+/);
+                keys = Object.keys(people[0]);
+
+                keys = keys.filter(key => !filterExcemptions.includes(key));
+
+                if (!parts || !parts.length) { return people; }
+
+                return people.filter((person) => {
+                    return parts.every((part) => {
+                        numericPart = parseFloat(part);
+
+                        return keys.some((key) => {
+                            switch (typeof person[key]) {
+                                case 'string':
+                                    keySearch = String(person[key]).toLowerCase().indexOf(part.toLowerCase()) > -1;
+                                    break;
+                                case 'number':
+                                    if (!isNaN(numericPart)) {
+                                        keySearch = person[key] >= numericPart;
+                                    }
+                                    break;
+                                default:
+                                    return false;
+                            }
+
+                            return keySearch;
+                        });
+                    });
+                });
             }
 
-            return this.people;
+            return people;
         }
     },
     methods: {

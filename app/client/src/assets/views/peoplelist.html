@@ -1,10 +1,35 @@
 <div class="list-wrap">
-    <p v-show="alertVisible" v-on:togglealert="alertVisible = true"><strong>New person added!</strong></p>
     <p>People:</p>
-    <p>Filter people: <input type="text" name="professionFilter" value="" placeholder="Filter People" v-model="professionFilter" /></p>
-    <ul>
-        <li v-for="person in filterPeople" v-bind:key="person.fname">
-            {{person.fname}} - {{person.lname}} - <strong>{{person.profession}}</strong>
-        </li>
-    </ul>
+    <div class="well">
+        <div class="control-group">
+            <label for="personFilter" class="input-label">Filter People:</label>
+            <input type="text" name="personFilter" id="personFilter" class="form-control" value="" placeholder="Type something..." v-model="personFilter" />
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Panel heading</div>
+        <div class="panel-body">
+            <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Profession</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- :key="person.profession" -->
+                <tr v-for="(person, index) in filterPeople">
+                    <th scope="row">{{index + 1}}</th>
+                    <td>{{person.fname}}</td>
+                    <td>{{person.lname}}</td>
+                    <td>{{person.profession}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
