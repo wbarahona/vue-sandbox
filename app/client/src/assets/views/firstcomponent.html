@@ -1,28 +1,45 @@
 <section>
-    <h1>{{title}}</h1>
-    <p>{{text}} - {{index}}</p>
-    <p>{{version}}</p>
-    <p>single arr:</p>
-    <ul>
-        <li v-for="item in singlearr" v-bind:key="item" v-text="item"></li>
-    </ul>
-    <br>
-    <button type="button" name="changeText" class="btn btn-primary" @click="changeText">Change Text</button>
-    <div class="well">
-    <form class="newperson" name="newperson">
-        <div class="form-group" :class="{'has-success': newperson.fname.length > 2, 'has-error': newperson.fname.length <= 2 && newperson.fname !== ''}">
-            <label for="fname" class="control-label">First name: </label>
-            <input type="text" name="fname" id="fname" class="form-control" value="" placeholder="First Name" v-model="newperson.fname" /><br>
+    <div class="jumbotron">
+        <h1 class="display-3">{{title}}</h1>
+        <p class="lead">{{text}} - {{index}}</p>
+        <hr class="my-4">
+        <p>{{version}}</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button" @click="changeText">Change me!</a>
+        </p>
+    </div>
+    <div class="card">
+        <div class="card-body alert-dark">
+            <ul>
+                <li v-for="item in singlearr" v-bind:key="item" v-text="item"></li>
+            </ul>
         </div>
-        <div class="form-group" :class="{'has-success': newperson.lname.length > 2, 'has-error': newperson.lname.length <= 2 && newperson.lname !== ''}">
-            <label for="lname" class="control-label">Last name: </label>
-            <input type="text" name="lname" id="lname" class="form-control" value="" placeholder="Last Name" v-model="newperson.lname" /><br>
+    </div>
+    <div class="card">
+        <div class="card-body alert-dark">
+            <form class="newitem" name="newitem">
+                <div class="form-group">
+                    <label for="name" class="control-label">Item name: </label>
+                    <input type="text" name="name" id="name" class="form-control" value="" placeholder="Item Name" v-model="newitem.name" :class="{'is-valid': newitem.name.length > 2, 'is-invalid': newitem.name.length <= 2 && newitem.name !== ''}" />
+                    <p class="invalid-feedback">Item name is required or invalid</p>
+                </div>
+                <div class="form-group">
+                    <label for="category" class="control-label">Item Category: </label>
+                    <input type="text" name="category" id="category" class="form-control" value="" placeholder="Last Name" v-model="newitem.category" :class="{'is-valid': newitem.category.length > 2, 'is-invalid': newitem.category.length <= 2 && newitem.category !== ''}" />
+                    <p class="invalid-feedback">Item category is required or invalid</p>
+                </div>
+                <div class="form-group">
+                    <label for="price" class="control-label">Item Price: </label>
+                    <input type="number" name="price" id="price" class="form-control" value="" placeholder="price" v-model="newitem.price" :class="{'is-valid': newitem.price > 1, 'is-invalid': newitem.price <= 1 && newitem.price !== ''}" />
+                    <p class="invalid-feedback">Item Price is required or invalid</p>
+                </div>
+                <div class="form-group">
+                    <label for="img" class="control-label">Item Image: </label>
+                    <input type="text" name="img" id="img" class="form-control" value="" placeholder="Last Name" v-model="newitem.img" :class="{'is-valid': newitem.img.length > 2, 'is-invalid': newitem.img.length <= 2 && newitem.img !== ''}" />
+                    <p class="invalid-feedback">Item image is required or invalid</p>
+                </div>
+                <button type="button" name="addPerson" class="btn btn-success" @click="addPerson">Add Person</button>
+            </form>
         </div>
-        <div class="form-group" :class="{'has-success': newperson.profession.length > 2, 'has-error': newperson.profession.length <= 2 && newperson.profession !== ''}">
-            <label for="profession" class="control-label">Profession: </label>
-            <input type="text" name="profession" id="profession" class="form-control" value="" placeholder="Profession" v-model="newperson.profession" /><br>
-        </div>
-        <button type="button" name="addPerson" class="btn btn-success" @click="addPerson">Add Person</button>
-    </form>
     </div>
 </section>

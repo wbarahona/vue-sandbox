@@ -1,5 +1,5 @@
 html {
-  font-size: 10px;
+  font-size: 14px;
   height: 100%;
 }
 
@@ -50,12 +50,11 @@ label {
 
 td {text-align: left;}
 
-.container {
-  margin: 0 auto;
-  padding-top: 70px;
-}
+// .container {
+//   margin: 0 auto;
+//   padding-top: 70px;
+// }
 
-.well {margin: 1.5rem 0;}
 .tab-wrap {
   background: white;
   border-bottom: .1rem solid #ddd;
@@ -69,14 +68,25 @@ td {text-align: left;}
 
 .alert {
   position: fixed;
+  top: 0;
   width: 100%;
   z-index: 9999;
 }
 
-.in {
-  padding-left: 0;
+.card {
+  margin: 1rem 0;
 }
 
-.visible {
+.show {
   display: block;
+}
+
+.form-control.is-valid ~ .invalid-feedback {
+  display: none;
+}
+
+.prev {
+  display: inline-block;
+  height: auto;
+  width: 2.3rem;
 }

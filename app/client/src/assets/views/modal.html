@@ -1,22 +1,22 @@
 <div class="">
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" :class="classVisible" v-show="settings.visible">
+    <div class="modal-backdrop fade" :class="classVisible" v-show="settings.visible"></div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" :class="classVisible" v-show="settings.visible">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel"><slot name="header"></slot></h4>
+                    <h5 class="modal-title" id="exampleModalLabel"><slot name="header"></slot></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <slot></slot>
                 </div>
                 <div class="modal-footer">
-                    <slot name="footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" @click="closeModal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </slot>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeModal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal-backdrop fade" :class="classVisible" v-show="settings.visible"></div>
 </div>

@@ -1,9 +1,8 @@
-<div>
+<div class="row justify-content-md-center">
     <messages :settings="msgsettings"></messages>
-    <div class="col-xs-6 col-xs-offset-3">
-        <h1>{{msg}}</h1>
-        <firstcomponent text="This is a text sent to the component!" :index="20" :people="people" :singlearr="singlearr"></firstcomponent>
-        <people-list :people="people"></people-list>
+    <div class="col-xs-12 col-md-8">
+        <firstcomponent text="This is a text sent to the component!" :title="msg" :index="20" :products="products" :singlearr="singlearr"></firstcomponent>
+        <table-list :items="products"></table-list>
         <tabs>
             <tab name="home" :selected="true">
                 <h1>Hi there this is the home content</h1>
@@ -20,6 +19,15 @@
         </tabs>
         <coupon></coupon>
         <button type="button" name="button" class="btn btn-warning" @click="showModal">Modal!</button>
+        <progress-bar :ratio="ratio" inline-template>
+            <div class="">
+                <p>Working... {{ratio}}%</p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" :aria-valuenow="ratio" aria-valuemin="0" aria-valuemax="100" :style="calcWidth"></div>
+                </div><br>
+                <p>s</p>
+            </div>
+        </progress-bar>
     </div>
     <modal :settings="modalsettings">
         <template slot="header">This is the modal title</template>

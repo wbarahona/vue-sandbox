@@ -8,17 +8,22 @@ component = {
     template: componentView,
     data() {
         return {
-            title: 'This is a title',
             version: '',
             versionnumber: 0,
-            newperson: {
-                fname: '',
-                lname: '',
-                profession: ''
+            newitem: {
+                name: '',
+                category: '',
+                price: '',
+                img: ''
             }
         };
     },
     props: {
+        title: {
+            type: String,
+            required: true,
+            default: 'The title'
+        },
         text: {
             type: String,
             required: true,
@@ -29,7 +34,7 @@ component = {
             required: false,
             default: 0
         },
-        people: {
+        products: {
             type: Array,
             required: true
         },
@@ -50,17 +55,18 @@ component = {
         },
         addPerson() {
             const { Events } = window;
-            const { newperson } = this;
-            const { fname, lname, profession } = newperson;
+            const { newitem } = this;
+            const { name, category, price, img } = newitem;
             const insertperson = {
-                fname, lname, profession
+                name, category, price, img
             };
 
-            this.people.push(insertperson);
+            this.products.push(insertperson);
 
-            this.newperson.fname = '';
-            this.newperson.lname = '';
-            this.newperson.profession = '';
+            this.newitem.name = '';
+            this.newitem.category = '';
+            this.newitem.price = '';
+            this.newitem.img = '';
 
             Events.send('userupdated');
             // this.$emit('userupdated');

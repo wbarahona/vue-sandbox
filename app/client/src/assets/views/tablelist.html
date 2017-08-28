@@ -1,0 +1,35 @@
+<div class="card list-wrap">
+    <div class="card-body alert-dark">
+        <p>Items:</p>
+        <div class="well">
+            <div class="control-group">
+                <label for="itemFilter" class="input-label">Filter Items:</label>
+                <input type="text" name="itemFilter" id="itemFilter" class="form-control" value="" placeholder="Type something..." v-model="itemFilter" />
+            </div>
+        </div>
+
+        <div class="card alert-light">
+            <table class="table table-striped">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- :key="item.profession" -->
+                    <tr v-for="(item, index) in filteredItems">
+                        <th scope="row">{{index + 1}}</th>
+                        <td>{{item.name}}</td>
+                        <td>{{item.category}}</td>
+                        <td>{{item.price}}</td>
+                        <td><img class="prev" :src="item.img" :alt="item.name"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

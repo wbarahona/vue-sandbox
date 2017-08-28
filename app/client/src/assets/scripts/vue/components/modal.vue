@@ -26,13 +26,22 @@ component = {
     },
     computed: {
         classVisible() {
-            return (this.settings.visible) ? 'in visible' : 'out';
+            return (this.settings.visible) ? 'show' : '';
         }
     },
     methods: {
         closeModal() {
             this.settings.visible = false;
         }
+    },
+    mounted() {
+        const doc = document;
+
+        doc.addEventListener('keyup', (e) => {
+            if (this.settings.visible && e.keyCode === 27) {
+                this.settings.visible = false;
+            }
+        });
     },
     watch: {
 

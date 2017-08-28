@@ -1,14 +1,18 @@
 <script type="text/javascript">
+import axios from 'axios';
 import appview from '../../views/appview.html';
 import firstcomponent from './components/firstcomponent.vue';
-import peoplelist from './components/peoplelist.vue';
+import tablelist from './components/tablelist.vue';
 import tabs from './components/tabs.vue';
 import tab from './components/tab.vue';
 import coupon from './components/coupon.vue';
 import messages from './components/messages.vue';
 import modal from './components/modal.vue';
+import progressbar from './components/progressbar.vue';
+// import getdata from './components/getdata.vue';
 
 export default {
+    name: 'appcomponent',
     template: appview,
     data() {
         return {
@@ -17,6 +21,7 @@ export default {
                 {fname: 'Willmer', lname: 'Barahona', profession: 'Webdeveloper'},
                 {fname: 'Tinchun', lname: 'Khanny', profession: 'Xamxun'}
             ],
+            products: [],
             singlearr: ['name', 'something'],
             msgsettings: {
                 type: 'info',
@@ -30,7 +35,8 @@ export default {
                 title: '',
                 content: '',
                 isdialog: false
-            }
+            },
+            ratio: 0
         };
     },
     methods: {
@@ -55,12 +61,36 @@ export default {
     },
     components: {
         firstcomponent,
-        'people-list': peoplelist,
+        'table-list': tablelist,
         tabs,
         tab,
         coupon,
         messages,
-        modal
+        modal,
+        'progress-bar': progressbar
+    },
+    mounted() {
+        let rnd = 0;
+
+        this.ratio = 55;
+
+        const ticker = setInterval(() => {
+            rnd = Math.floor(Math.random() * 100) + this.ratio;
+            this.ratio += rnd;
+            if (this.ratio > 100) {
+                this.ratio = 100;
+                clearInterval(ticker);
+            }
+        }, 1000);
+
+        axios.get('https://www.guaroexpress.com/api/v1/items/').then((resp) => {
+            const { data } = resp;
+            const { content } = data;
+
+            this.products = content;
+        }, (err) => {
+            console.warn(err);
+        });
     },
     created() {
         const { Events } = window;
