@@ -46,10 +46,10 @@ export default {
             this.msgsettings.message = `Coupon applied: ${ val }`;
             this.msgsettings.timeout = 3000;
         },
-        userUpdated() {
+        itemupdated() {
             this.msgsettings.type = 'info';
             this.msgsettings.visible = true;
-            this.msgsettings.message = 'Person added successfully!';
+            this.msgsettings.message = 'Item added successfully!';
             this.msgsettings.timeout = 3000;
         },
         showModal() {
@@ -95,7 +95,7 @@ export default {
     created() {
         const { Events } = window;
 
-        Events.listen('userupdated', () => this.userUpdated());
+        Events.listen('itemupdated', () => this.itemupdated());
         Events.listen('applied', (val) => this.onCouponApplied(val));
     }
 };
