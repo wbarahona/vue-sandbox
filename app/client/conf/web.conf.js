@@ -43,8 +43,8 @@ module.exports = {
         },
         authkeys: {
             facebookapps: [
-                {appid: '',appsecret: '', clientToken: ''},
-                {appid: '',appsecret: '', clientToken: ''}
+                {appid: '', appsecret: '', clientToken: ''},
+                {appid: '', appsecret: '', clientToken: ''}
             ],
             twitterapps: '',
             google: {
@@ -62,21 +62,25 @@ module.exports = {
             language: 'en',
             location: '',
             address: [
-                        '1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                        '2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                     ],
+                '1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                '2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+            ],
             coordinates: []
         },
         menu: [
-                {title: 'Home', url: '/'},
-                {title: 'Project A', url: '/projects/project-a.html'},
-                {title: 'About Us', url: 'about.html'},
-                {title: 'Contact Us', url: '/contact/'}
+            {title: 'Home', url: '/'},
+            {title: 'Project A', url: '/projects/project-a.html'},
+            {title: 'About Us', url: 'about.html'},
+            {title: 'Contact Us', url: '/contact/'}
         ],
         socialurl: {
             facebook: '',
             twitter: '',
             youtube: ''
+        },
+        assets: {
+            'css/styles.min.css': 'css/styles.min.css',
+            'scripts/app.min.js': 'scripts/app.min.js'
         }
     },
     data: {}

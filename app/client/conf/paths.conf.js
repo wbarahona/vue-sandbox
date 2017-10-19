@@ -19,5 +19,8 @@ module.exports = {
         images: './dist/assets/img',
         styles: './dist/assets/css',
         root: './dist'
+    },
+    project: {
+        root: '.'
     }
 };

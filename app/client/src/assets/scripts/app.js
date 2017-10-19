@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import vueApp from './vue/app.vue';
 
+Vue.config.productionTip = false;
+
 window.Events = new class {
     constructor() {
         this.vue = new Vue();

@@ -16,7 +16,8 @@
       "angular": false,
       "google": false,
       "window": false,
-      "document": false
+      "document": false,
+      "handlebars": false
     },
     extends: [
       "eslint:recommended",
