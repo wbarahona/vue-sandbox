@@ -18,15 +18,34 @@ component = {
             default: {
                 type: 'info',
                 visible: false,
-                title: '',
+                header: '',
                 content: '',
-                isdialog: false
+                isdialog: false,
+                confirm: 'Ok',
+                reject: 'Cancel',
+                size: 'large'
             }
         }
     },
     computed: {
         classVisible() {
             return (this.settings.visible) ? 'show' : '';
+        },
+        classSize() {
+            let classNamePrefix = 'modal-';
+
+            switch (this.settings.size) {
+                case 'large':
+                    classNamePrefix += 'lg';
+                    break;
+                case 'small':
+                    classNamePrefix += 'sm';
+                    break;
+                default:
+                    classNamePrefix += 'md';
+            }
+
+            return classNamePrefix;
         }
     },
     methods: {

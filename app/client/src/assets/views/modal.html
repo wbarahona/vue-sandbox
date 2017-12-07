@@ -1,20 +1,18 @@
 <div class="">
     <div class="modal-backdrop fade" :class="classVisible" v-show="settings.visible"></div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" :class="classVisible" v-show="settings.visible">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" :class="classSize" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><slot name="header"></slot></h5>
+                    <h5 class="modal-title" id="exampleModalLabel" slot="header" v-html="settings.header"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="closeModal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <slot></slot>
-                </div>
+                <div class="modal-body" slot="content" v-html="settings.content"></div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="closeModal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" v-show="settings.isdialog" class="btn btn-secondary" data-dismiss="modal" @click="closeModal" v-html="settings.reject"></button>
+                    <button type="button" class="btn btn-primary" v-html="settings.confirm"></button>
                 </div>
             </div>
         </div>

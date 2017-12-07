@@ -57,6 +57,7 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "vue": "^2.4.2",
+    "vue-router": "^3.0.1",
     "vueify": "^9.4.1",
     "watchify": "^3.9.0",
     "yargs": "^8.0.2"
@@ -74,6 +75,7 @@
   },
   "browser": {
     "vue": "./node_modules/vue/dist/vue.js",
+    "vuerouter": "./node_modules/vue-router/dist/vue-router.js",
     "axios": "./node_modules/axios/dist/axios.min.js"
   }
 }
